@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+%w(yaml coinmon coinmon/tablifier).each { |dep| require dep }
+
+portfolio = YAML.load_file ARGV[0]
+data = Coinmon.run(portfolio, ARGV[1])
+puts Tablifier.run data
